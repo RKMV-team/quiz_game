@@ -21,6 +21,7 @@ quiz_game/
 ├── requirements.txt 
 └── README.md
 
+<!--Установка-->
 ## ▶️ How to Run
 
 1. **Start the server:**
