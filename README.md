@@ -4,7 +4,7 @@
 A multiplayer trivia quiz game implemented in Python using TCP sockets. Players connect to the server, receive questions, and answer them in turns. The server tracks scores and ensures turn-based play.
 
 ## 🗂️ Project Structure
-
+```
 quiz_game/ 
 ├── server/ 
 │ ├── server.py 
@@ -20,17 +20,14 @@ quiz_game/
 │ └── test_question_loader.py 
 ├── requirements.txt 
 └── README.md
-
-<!--Установка-->
+```
 ## ▶️ How to Run
 
 1. **Start the server:**
-```bash
-python3 server/server.py
+```python3 server/server.py```
 
 2. **Start clients in separate terminals:**
-```bash
-python3 client/client.py
+```python3 client/client.py```
 
 💡 Features
 Supports multiple players
@@ -47,8 +44,7 @@ Easy to extend (e.g., GUI, game rooms)
 
 🧪 Running Tests
 To run the tests:
-```bash
-python3 -m unittest discover tests
+```python3 -m unittest discover tests```
 
 ⚙️ Dependencies
 This project only uses the standard Python 3.8+ library, no external dependencies are required.
