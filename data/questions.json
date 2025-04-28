@@ -1,0 +1,1894 @@
+{
+  "categories": [
+    {
+      "name": "Programming Languages",
+      "description": "Test your knowledge about Python, JavaScript, C++, and more.",
+      "questions": [
+        {
+          "question": "Which language uses 'print()' for output by default?",
+          "options": ["Python", "JavaScript", "C++", "Java"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'JS' stand for in programming?",
+          "options": ["Java Style", "Just Script", "JavaScript", "Jumbled Syntax"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which operator is used for pointer dereferencing in C++?",
+          "options": ["*", "&", "->", "::"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What will '3' + 2 evaluate to in JavaScript?",
+          "options": ["5", "32", "Error", "NaN"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which language introduced the concept of 'null safety'?",
+          "options": ["Kotlin", "Swift", "Dart", "Rust"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the correct file extension for Python files?",
+          "options": [".pt", ".py", ".pyt", ".python"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which language uses 'console.log()' for output?",
+          "options": ["Python", "Java", "JavaScript", "C#"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'OOP' stand for?",
+          "options": ["Object-Oriented Programming", "Operational Output Process", "Object Output Protocol", "Optional Operation Parameter"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which language was created by Guido van Rossum?",
+          "options": ["Ruby", "Python", "Perl", "PHP"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the correct way to declare a constant in JavaScript (ES6)?",
+          "options": ["var", "let", "const", "constant"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is NOT a Python web framework?",
+          "options": ["Django", "Flask", "Spring", "FastAPI"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What does 'API' stand for?",
+          "options": ["Automated Programming Interface", "Application Programming Interface", "Advanced Program Interaction", "Application Process Integration"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which language uses '#' for single-line comments?",
+          "options": ["Python", "JavaScript", "C++", "Java"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the output of 'print(2 ** 3)' in Python?",
+          "options": ["6", "8", "9", "23"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which symbol is used for single-line comments in JavaScript?",
+          "options": ["#", "//", "--", "/*"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the correct syntax for an 'if' statement in Python?",
+          "options": ["if x > 5 then", "if (x > 5)", "if x > 5:", "when x > 5"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which language uses 'System.out.println()' for output?",
+          "options": ["C++", "Java", "Python", "C#"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'IDE' stand for in programming?",
+          "options": ["Integrated Development Environment", "Internal Development Editor", "Interactive Development Environment", "International Data Exchange"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which of these is a dynamically typed language?",
+          "options": ["Java", "C++", "Python", "C#"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the correct way to create a function in JavaScript?",
+          "options": ["function = myFunc() {}", "def myFunc() {}", "function myFunc() {}", "func myFunc() {}"],
+          "answer": "C",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Gaming & Esports",
+      "description": "Questions about popular games, tournaments, and gaming technology.",
+      "questions": [
+        {
+          "question": "Which game popularized the battle royale genre?",
+          "options": ["Fortnite", "PUBG", "Apex Legends", "Call of Duty"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the highest prize pool in esports history?",
+          "options": ["$10 million", "$25 million", "$34 million", "$40 million"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which console was released first?",
+          "options": ["PlayStation 2", "Xbox", "GameCube", "Dreamcast"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which company developed the Unreal Engine?",
+          "options": ["Ubisoft", "Epic Games", "Valve", "Electronic Arts"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What year was Minecraft officially released?",
+          "options": ["2009", "2010", "2011", "2012"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is NOT a Nintendo franchise?",
+          "options": ["Mario", "Zelda", "Halo", "Pokémon"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the best-selling video game of all time?",
+          "options": ["Tetris", "Minecraft", "GTA V", "Wii Sports"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which game features the character 'Kratos'?",
+          "options": ["Dark Souls", "God of War", "Devil May Cry", "The Witcher"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'FPS' stand for in gaming?",
+          "options": ["First Player Shooter", "Frames Per Second", "Final Player Score", "Fast Play System"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which company owns Steam?",
+          "options": ["Microsoft", "Valve", "Epic Games", "Blizzard"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "In which game would you find 'Creepers'?",
+          "options": ["Terraria", "Minecraft", "Stardew Valley", "Don't Starve"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which of these is a MOBA game?",
+          "options": ["Overwatch", "League of Legends", "Counter-Strike", "Diablo"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the main character in The Witcher series?",
+          "options": ["Geralt", "Gandalf", "Garrett", "Garrosh"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which game has the largest map size?",
+          "options": ["GTA V", "The Witcher 3", "Elder Scrolls V: Skyrim", "No Man's Sky"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What was the first game to feature 'Ray Tracing' technology?",
+          "options": ["Battlefield V", "Minecraft", "Cyberpunk 2077", "Quake II RTX"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which company developed the 'Source' game engine?",
+          "options": ["Epic Games", "Valve", "id Software", "Crytek"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "In Overwatch, what is the ultimate ability of Tracer called?",
+          "options": ["Pulse Bomb", "Graviton Surge", "Self-Destruct", "Rocket Barrage"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which game introduced the 'Nemesis System'?",
+          "options": ["Shadow of Mordor", "Assassin's Creed", "Dark Souls", "Dragon Age"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the virtual reality headset developed by Valve?",
+          "options": ["Oculus Rift", "HTC Vive", "Valve Index", "PlayStation VR"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these games was NOT developed by FromSoftware?",
+          "options": ["Dark Souls", "Bloodborne", "Sekiro", "The Witcher 3"],
+          "answer": "D",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Science & Space",
+      "description": "Planets, physics phenomena, and famous scientists.",
+      "questions": [
+        {
+          "question": "What is the largest planet in our solar system?",
+          "options": ["Earth", "Saturn", "Jupiter", "Neptune"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who developed the theory of relativity?",
+          "options": ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Galileo Galilei"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the chemical symbol for gold?",
+          "options": ["Go", "Gd", "Au", "Ag"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which planet is known as the 'Red Planet'?",
+          "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the hardest natural substance on Earth?",
+          "options": ["Gold", "Iron", "Diamond", "Quartz"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which gas is most abundant in Earth's atmosphere?",
+          "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the speed of light in a vacuum?",
+          "options": ["300,000 km/s", "150,000 km/s", "1 million km/s", "30 km/s"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which scientist is known for the laws of motion?",
+          "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the atomic number of oxygen?",
+          "options": ["6", "8", "16", "32"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which planet has the most moons?",
+          "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the study of fossils called?",
+          "options": ["Geology", "Paleontology", "Archaeology", "Meteorology"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which element is liquid at room temperature?",
+          "options": ["Bromine", "Chlorine", "Iodine", "Fluorine"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the nearest star to Earth after the Sun?",
+          "options": ["Betelgeuse", "Proxima Centauri", "Sirius", "Alpha Centauri"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which scientist discovered radioactivity?",
+          "options": ["Marie Curie", "Ernest Rutherford", "Niels Bohr", "Max Planck"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the chemical formula for water?",
+          "options": ["HO", "H2O", "H2O2", "H3O"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which planet rotates on its side?",
+          "options": ["Venus", "Mars", "Uranus", "Neptune"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the main component of the Sun?",
+          "options": ["Liquid lava", "Hydrogen", "Oxygen", "Helium"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is NOT a type of galaxy?",
+          "options": ["Spiral", "Elliptical", "Irregular", "Triangular"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the unit of electrical resistance?",
+          "options": ["Volt", "Ampere", "Ohm", "Watt"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which planet has the Great Red Spot?",
+          "options": ["Mars", "Jupiter", "Saturn", "Venus"],
+          "answer": "B",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Sports & Athletes",
+      "description": "Football, basketball, Olympic records, and sports trivia.",
+      "questions": [
+        {
+          "question": "Which country won the 2018 FIFA World Cup?",
+          "options": ["Germany", "Brazil", "France", "Argentina"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "How many players are on a basketball court per team?",
+          "options": ["5", "6", "7", "8"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which athlete has the most Olympic gold medals?",
+          "options": ["Usain Bolt", "Michael Phelps", "Carl Lewis", "Larisa Latynina"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "In which sport would you perform a 'slam dunk'?",
+          "options": ["Tennis", "Basketball", "Volleyball", "Football"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which country hosted the 2016 Summer Olympics?",
+          "options": ["China", "Brazil", "Russia", "UK"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the diameter of a basketball hoop in inches?",
+          "options": ["16", "18", "20", "24"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which tennis player has the most Grand Slam titles?",
+          "options": ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Pete Sampras"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "In football, what does 'FIFA' stand for?",
+          "options": ["Federation of International Football Associations", "Fédération Internationale de Football Association", "Football International Federation Association", "Federation of International Football Athletes"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which country invented baseball?",
+          "options": ["USA", "UK", "Canada", "Japan"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "How many points is a touchdown worth in American football?",
+          "options": ["3", "6", "7", "9"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which boxer was known as 'The Greatest'?",
+          "options": ["Mike Tyson", "Muhammad Ali", "Floyd Mayweather", "George Foreman"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the maximum break in snooker?",
+          "options": ["100", "147", "155", "200"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which country won the first ever FIFA World Cup in 1930?",
+          "options": ["Brazil", "Uruguay", "Italy", "Argentina"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "In which sport would you use a 'birdie'?",
+          "options": ["Tennis", "Badminton", "Golf", "Table Tennis"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which NBA player has scored the most points in a single game?",
+          "options": ["Michael Jordan", "Kobe Bryant", "Wilt Chamberlain", "LeBron James"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "How many players are in a rugby union team?",
+          "options": ["11", "13", "15", "17"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which country has won the most Winter Olympic medals?",
+          "options": ["USA", "Russia", "Norway", "Canada"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "In golf, what is a score of one under par called?",
+          "options": ["Eagle", "Birdie", "Bogey", "Albatross"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which sport uses the term 'love' to mean zero?",
+          "options": ["Tennis", "Golf", "Cricket", "Badminton"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who is the all-time leading scorer in NBA history?",
+          "options": ["Michael Jordan", "Kareem Abdul-Jabbar", "LeBron James", "Kobe Bryant"],
+          "answer": "C",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Myths & Urban Legends",
+      "description": "Debunking or confirming popular myths from around the world.",
+      "questions": [
+        {
+          "question": "Which mythical creature is half lion, half eagle?",
+          "options": ["Griffin", "Phoenix", "Centaur", "Minotaur"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the legendary sword in the stone?",
+          "options": ["Excalibur", "Durandal", "Gram", "Caladbolg"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which creature turns to stone in sunlight according to myth?",
+          "options": ["Vampire", "Werewolf", "Medusa", "Basilisk"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the Norse god of thunder?",
+          "options": ["Odin", "Loki", "Thor", "Balder"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which legendary island is said to have sunk into the ocean?",
+          "options": ["El Dorado", "Atlantis", "Avalon", "Lemuria"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What creature is said to drink the blood of livestock?",
+          "options": ["Chupacabra", "Yeti", "Kraken", "Banshee"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which mythical bird is reborn from its own ashes?",
+          "options": ["Roc", "Phoenix", "Thunderbird", "Harpy"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the headless horseman in American folklore?",
+          "options": ["Sleepy Hollow", "Ichabod Crane", "The Headless Horseman", "The Dullahan"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which creature is said to lure sailors with its song?",
+          "options": ["Mermaid", "Siren", "Harpy", "Nymph"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the legendary king with donkey ears?",
+          "options": ["Midas", "Minos", "Lycaon", "Actaeon"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which creature is said to be able to kill with its gaze?",
+          "options": ["Medusa", "Cyclops", "Minotaur", "Cerberus"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the Japanese water spirit?",
+          "options": ["Oni", "Kappa", "Tengu", "Yuki-onna"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which legendary creature is said to inhabit Loch Ness?",
+          "options": ["Kraken", "Nessie", "Leviathan", "Jörmungandr"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the Greek goddess of witchcraft?",
+          "options": ["Athena", "Hecate", "Artemis", "Persephone"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which creature is said to be able to shapeshift into human form?",
+          "options": ["Werewolf", "Vampire", "Doppelgänger", "All of the above"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the legendary bird so large it can carry elephants?",
+          "options": ["Phoenix", "Roc", "Thunderbird", "Garuda"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which creature is said to guard the underworld in Greek mythology?",
+          "options": ["Minotaur", "Cerberus", "Hydra", "Chimera"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of the Scottish creature said to inhabit lakes?",
+          "options": ["Kelpie", "Selkie", "Banshee", "Púca"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which legendary king turned everything he touched to gold?",
+          "options": ["Midas", "Minos", "Theseus", "Perseus"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the female spirit in Irish folklore who wails to foretell death?",
+          "options": ["Banshee", "Selkie", "Leanan sídhe", "Merrow"],
+          "answer": "A",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "description": "Challenge yourself with questions about hacking, encryption, and security practices.",
+      "questions": [
+        {
+          "question": "What is the most common type of cyber attack?",
+          "options": ["Phishing", "DDoS", "Man-in-the-middle", "SQL injection"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which of these is NOT a strong password practice?",
+          "options": ["Using special characters", "Reusing passwords across sites", "12+ characters", "Avoiding dictionary words"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'VPN' stand for?",
+          "options": ["Virtual Private Network", "Verified Public Node", "Virtual Proxy Network", "Volatile Protocol Number"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which encryption protocol is used for secure web browsing?",
+          "options": ["HTTP", "FTP", "HTTPS", "SMTP"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is 'two-factor authentication'?",
+          "options": ["Using two passwords", "Verifying identity with two methods", "Logging in from two devices", "Having two user accounts"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is a type of malware?",
+          "options": ["Firewall", "Ransomware", "Adblocker", "Packet sniffer"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'DDoS' stand for?",
+          "options": ["Data Denial of Service", "Distributed Denial of Service", "Digital Defense System", "Direct Data Overflow"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which organization discovered the Heartbleed bug?",
+          "options": ["Google", "Codenomicon", "FBI", "Anonymous"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the purpose of a firewall?",
+          "options": ["Block unauthorized access", "Speed up internet", "Store backups", "Scan emails"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which of these is NOT a cybersecurity best practice?",
+          "options": ["Regular software updates", "Public WiFi for banking", "Password managers", "Encrypted messaging"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'SSL' stand for?",
+          "options": ["Secure Socket Layer", "System Security Log", "Server Side Language", "Standard Security License"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which attack involves inserting malicious SQL code?",
+          "options": ["Phishing", "Cross-site scripting", "SQL injection", "Brute force"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is 'ethical hacking' called?",
+          "options": ["Black hat hacking", "Penetration testing", "Cyber espionage", "Script kiddie"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which protocol encrypts email communications?",
+          "options": ["SMTP", "PGP", "HTTP", "FTP"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the main purpose of a CAPTCHA?",
+          "options": ["Block spam", "Prevent bot access", "Encrypt data", "Filter viruses"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which cybersecurity concept uses 'something you know, have, and are'?",
+          "options": ["Firewall", "Multi-factor authentication", "VPN", "Antivirus"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'IoT' stand for in cybersecurity?",
+          "options": ["Internet of Things", "Internal Online Testing", "International Organization Team", "Integrated Output Technology"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which virus famously infected Iran's nuclear facilities?",
+          "options": ["ILOVEYOU", "Stuxnet", "WannaCry", "Zeus"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is 'social engineering' in cybersecurity?",
+          "options": ["Building secure systems", "Manipulating people to gain access", "Writing encryption algorithms", "Designing firewalls"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which law requires data breach notifications in the EU?",
+          "options": ["GDPR", "HIPAA", "PCI DSS", "SOX"],
+          "answer": "A",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Tech Gadgets",
+      "description": "Latest smartphones, VR, and futuristic technology.",
+      "questions": [
+        {
+          "question": "Which company first introduced wireless earbuds?",
+          "options": ["Apple", "Samsung", "Sony", "Bose"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'OLED' stand for?",
+          "options": ["Organic Light-Emitting Diode", "Optical Light Emission Device", "Organic Liquid Electronic Display", "Official LED"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which device popularized voice assistants?",
+          "options": ["iPhone", "Amazon Echo", "Google Home", "Microsoft Surface"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the resolution of 4K video?",
+          "options": ["1920x1080", "2560x1440", "3840x2160", "4096x2160"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which company developed the first consumer VR headset?",
+          "options": ["Oculus", "HTC", "Sony", "Valve"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'LiDAR' do in smartphones?",
+          "options": ["Improves battery life", "Measures distance with light", "Boosts signal", "Enhances audio"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which phone first introduced facial recognition?",
+          "options": ["iPhone X", "Samsung Galaxy S8", "Google Pixel 2", "OnePlus 5"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the main advantage of USB-C over USB-A?",
+          "options": ["Higher price", "Reversible connector", "Larger size", "Slower speed"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which company makes the Switch console?",
+          "options": ["Sony", "Microsoft", "Nintendo", "Sega"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'eSIM' stand for?",
+          "options": ["Electronic SIM", "Embedded SIM", "Enhanced SIM", "External SIM"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which device tracks fitness metrics like heart rate?",
+          "options": ["Smartwatch", "E-reader", "Digital camera", "External hard drive"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What technology allows contactless payments?",
+          "options": ["Bluetooth", "NFC", "Wi-Fi Direct", "5G"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which company developed the first foldable smartphone?",
+          "options": ["Samsung", "Apple", "Huawei", "Motorola"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'DPI' mean in mouse specifications?",
+          "options": ["Dots Per Inch", "Data Processing Interface", "Digital Pointer Input", "Display Pixel Information"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which streaming device is made by Roku?",
+          "options": ["Fire TV Stick", "Chromecast", "Roku Stick", "Apple TV"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the main feature of a mechanical keyboard?",
+          "options": ["Individual switches per key", "Touchscreen", "Wireless charging", "Voice control"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which company makes the PlayStation VR headset?",
+          "options": ["Microsoft", "Sony", "Valve", "HTC"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What does 'IoT' stand for in tech gadgets?",
+          "options": ["Internet of Things", "Input/Output Technology", "Integrated Online Tech", "Internal Operating Temperature"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which phone first had a pop-up selfie camera?",
+          "options": ["iPhone 11", "Samsung Galaxy S10", "OnePlus 7 Pro", "Google Pixel 3"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the refresh rate of most standard monitors?",
+          "options": ["30Hz", "60Hz", "120Hz", "240Hz"],
+          "answer": "B",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Movies & TV Shows",
+      "description": "Blockbusters, iconic quotes, and famous actors.",
+      "questions": [
+        {
+          "question": "Which movie features the quote 'May the Force be with you'?",
+          "options": ["Star Trek", "Star Wars", "Avatar", "Guardians of the Galaxy"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who played Jack in Titanic?",
+          "options": ["Brad Pitt", "Leonardo DiCaprio", "Tom Cruise", "Johnny Depp"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which TV show is set in Westeros?",
+          "options": ["The Witcher", "Game of Thrones", "Vikings", "The Last Kingdom"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the highest-grossing film of all time?",
+          "options": ["Avatar", "Avengers: Endgame", "Titanic", "Star Wars: The Force Awakens"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which actor played Iron Man?",
+          "options": ["Chris Evans", "Robert Downey Jr.", "Chris Hemsworth", "Mark Ruffalo"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What year was the first Harry Potter movie released?",
+          "options": ["1999", "2001", "2003", "2005"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which movie features a spinning top as its final shot?",
+          "options": ["The Matrix", "Inception", "Interstellar", "Shutter Island"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Who directed Pulp Fiction?",
+          "options": ["Martin Scorsese", "Quentin Tarantino", "Steven Spielberg", "Christopher Nolan"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which TV show features Walter White?",
+          "options": ["The Sopranos", "Breaking Bad", "Better Call Saul", "Narcos"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the fictional country in Black Panther?",
+          "options": ["Genosha", "Wakanda", "Latveria", "Zamunda"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which movie won the first Best Picture Oscar?",
+          "options": ["Sunrise", "Wings", "Metropolis", "The Jazz Singer"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Who played the Joker in The Dark Knight?",
+          "options": ["Jared Leto", "Jack Nicholson", "Heath Ledger", "Joaquin Phoenix"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which TV show features 'Red Keep' and 'Winterfell'?",
+          "options": ["The Witcher", "Vikings", "Game of Thrones", "The Last Kingdom"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of the ship in Titanic?",
+          "options": ["Queen Mary", "RMS Titanic", "USS Enterprise", "The Black Pearl"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which movie features 'Hakuna Matata'?",
+          "options": ["Aladdin", "The Lion King", "Mulan", "Pocahontas"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who directed Avengers: Endgame?",
+          "options": ["Joss Whedon", "James Gunn", "Russo Brothers", "Taika Waititi"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which actor has won the most Oscars?",
+          "options": ["Meryl Streep", "Jack Nicholson", "Katharine Hepburn", "Daniel Day-Lewis"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the highest-rated TV show on IMDb?",
+          "options": ["Breaking Bad", "Game of Thrones", "The Wire", "Planet Earth II"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which movie features 'Here's Johnny!'?",
+          "options": ["The Shining", "Psycho", "Halloween", "A Nightmare on Elm Street"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who played Hermione Granger?",
+          "options": ["Emma Roberts", "Emma Stone", "Emma Watson", "Emma Thompson"],
+          "answer": "C",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Riddles & Brain Teasers",
+      "description": "Logic puzzles and tricky questions to test your analytical skills.",
+      "questions": [
+        {
+          "question": "What has keys but can't open locks?",
+          "options": ["A door", "A piano", "A map", "A password"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What gets wetter as it dries?",
+          "options": ["A towel", "A sponge", "The ocean", "A raincoat"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "I speak without a mouth and hear without ears. What am I?",
+          "options": ["An echo", "A tree", "A book", "A shadow"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What has a head, a tail, but no body?",
+          "options": ["A snake", "A coin", "A river", "A shadow"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What comes once in a minute, twice in a moment, but never in a thousand years?",
+          "options": ["The letter 'M'", "The number '1'", "A second", "A vowel"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What can you break without touching it?",
+          "options": ["A promise", "A glass", "A heart", "A record"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What has cities but no houses, forests but no trees, and water but no fish?",
+          "options": ["A map", "A dream", "A painting", "A story"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What goes up but never comes down?",
+          "options": ["Your age", "A balloon", "A mountain", "The stock market"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What can travel around the world while staying in a corner?",
+          "options": ["A stamp", "A plane", "A thought", "A satellite"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What has hands but can't clap?",
+          "options": ["A person", "A clock", "A tree", "A statue"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is always in front of you but can't be seen?",
+          "options": ["The future", "The past", "The present", "Your nose"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What gets bigger when more is taken away?",
+          "options": ["A hole", "A debt", "A shadow", "A balloon"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What has a neck but no head?",
+          "options": ["A shirt", "A giraffe", "A bottle", "A river"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What can you hold in your right hand but not in your left?",
+          "options": ["Your left elbow", "A pencil", "Your breath", "A thought"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What belongs to you but others use it more than you do?",
+          "options": ["Your name", "Your money", "Your phone", "Your clothes"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What has many keys but can't open a single lock?",
+          "options": ["A jailer", "A piano", "A locksmith", "A keyboard"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What can you catch but not throw?",
+          "options": ["A ball", "A cold", "A fish", "A train"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What runs around a backyard but never moves?",
+          "options": ["A dog", "A fence", "A shadow", "A tree"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What has words but never speaks?",
+          "options": ["A book", "A parrot", "A recording", "A ghost"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What has a thumb and four fingers but is not alive?",
+          "options": ["A hand", "A glove", "A monkey", "A statue"],
+          "answer": "B",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Food & Cuisine",
+      "description": "Dishes from around the world and interesting cooking facts.",
+      "questions": [
+        {
+          "question": "Which country does sushi originate from?",
+          "options": ["China", "Japan", "Korea", "Thailand"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the main ingredient in hummus?",
+          "options": ["Lentils", "Chickpeas", "Eggplant", "Yogurt"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which of these is NOT a type of pasta?",
+          "options": ["Farfalle", "Pappardelle", "Ricotta", "Fusilli"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the national dish of Spain?",
+          "options": ["Paella", "Tapas", "Gazpacho", "Tortilla"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which country invented chocolate?",
+          "options": ["Switzerland", "Belgium", "Mexico", "France"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the primary ingredient in traditional borscht?",
+          "options": ["Tomato", "Beetroot", "Cabbage", "Potato"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which cheese has holes?",
+          "options": ["Cheddar", "Swiss", "Brie", "Gouda"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the main spice in Indian curry?",
+          "options": ["Paprika", "Cumin", "Turmeric", "Coriander"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which country produces the most coffee?",
+          "options": ["Colombia", "Brazil", "Vietnam", "Ethiopia"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the key ingredient in a traditional French ratatouille?",
+          "options": ["Eggplant", "Zucchini", "Tomato", "All of the above"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which fruit is known as 'the king of fruits' in Southeast Asia?",
+          "options": ["Mango", "Durian", "Pineapple", "Papaya"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the national dish of Hungary?",
+          "options": ["Goulash", "Paprikash", "Langos", "Chicken paprikash"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which country invented croissants?",
+          "options": ["France", "Austria", "Italy", "Switzerland"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the main ingredient in traditional Japanese miso soup?",
+          "options": ["Seaweed", "Tofu", "Miso paste", "Fish broth"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is NOT a type of rice?",
+          "options": ["Basmati", "Jasmine", "Arborio", "Orzo"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the primary grain used in traditional couscous?",
+          "options": ["Wheat", "Corn", "Rice", "Barley"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which country consumes the most pizza per capita?",
+          "options": ["United States", "Italy", "Norway", "Argentina"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the main ingredient in traditional Greek tzatziki?",
+          "options": ["Yogurt", "Sour cream", "Mayonnaise", "Cream cheese"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which of these is NOT a real type of apple?",
+          "options": ["Honeycrisp", "Cosmic Crisp", "Space Crisp", "Fuji"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the national dish of Thailand?",
+          "options": ["Pad Thai", "Green Curry", "Tom Yum", "Massaman Curry"],
+          "answer": "A",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "AI & Machine Learning",
+      "description": "From neural networks to ChatGPT, test your AI knowledge.",
+      "questions": [
+        {
+          "question": "What does 'AI' stand for?",
+          "options": ["Automated Intelligence", "Artificial Intelligence", "Advanced Interface", "Algorithmic Inference"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which company developed ChatGPT?",
+          "options": ["Google", "OpenAI", "Microsoft", "DeepMind"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the name of Google's AI chatbot?",
+          "options": ["Bard", "Copilot", "Claude", "Gemini"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which type of neural network is commonly used for image recognition?",
+          "options": ["RNN", "CNN", "GAN", "Transformer"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'LLM' stand for in AI?",
+          "options": ["Large Language Model", "Logical Learning Machine", "Layered Linear Module", "Linguistic Logic Matrix"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which AI system defeated the world champion in Go?",
+          "options": ["Deep Blue", "AlphaGo", "Watson", "GPT-3"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of Tesla's humanoid robot?",
+          "options": ["Atlas", "Optimus", "Sophia", "Asimo"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which technique helps prevent AI overfitting?",
+          "options": ["Data augmentation", "Feature engineering", "Regularization", "All of the above"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'GPT' stand for in ChatGPT?",
+          "options": ["General Purpose Transformer", "Generative Pre-trained Transformer", "Guided Programming Technology", "Global Processing Tensor"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which AI application generates realistic images from text?",
+          "options": ["Stable Diffusion", "BERT", "TensorFlow", "Siri"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the name of Microsoft's AI assistant?",
+          "options": ["Alexa", "Cortana", "Copilot", "Bing AI"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which company created the AlphaFold system for protein folding?",
+          "options": ["OpenAI", "DeepMind", "Anthropic", "IBM"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What does 'AGI' stand for?",
+          "options": ["Automated General Intelligence", "Artificial General Intelligence", "Advanced Generative Interface", "Algorithmic Global Integration"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which AI concept involves generating fake but realistic data?",
+          "options": ["Deep Learning", "Generative Adversarial Networks", "Reinforcement Learning", "Computer Vision"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the name of Amazon's AI assistant?",
+          "options": ["Siri", "Alexa", "Google Assistant", "Bixby"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which AI technology powers recommendation systems?",
+          "options": ["Computer Vision", "Natural Language Processing", "Collaborative Filtering", "Robotics"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What was the first AI program to defeat a chess world champion?",
+          "options": ["AlphaZero", "Deep Blue", "Stockfish", "Leela Chess"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which of these is NOT an AI programming framework?",
+          "options": ["TensorFlow", "PyTorch", "Keras", "Django"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What does 'NLP' stand for in AI?",
+          "options": ["Neural Language Processing", "Natural Language Processing", "Network Learning Protocol", "Native Linguistic Programming"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which AI concept involves rewarding desired behaviors?",
+          "options": ["Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Transfer Learning"],
+          "answer": "C",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "History & World Events",
+      "description": "Major wars, discoveries, and famous historical figures.",
+      "questions": [
+        {
+          "question": "In which year did World War II end?",
+          "options": ["1943", "1945", "1947", "1950"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who was the first president of the United States?",
+          "options": ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which ancient civilization built the pyramids?",
+          "options": ["Greeks", "Romans", "Egyptians", "Mayans"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What year did the Berlin Wall fall?",
+          "options": ["1987", "1989", "1991", "1993"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who discovered America?",
+          "options": ["Christopher Columbus", "Vasco da Gama", "Ferdinand Magellan", "James Cook"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which empire was ruled by Genghis Khan?",
+          "options": ["Ottoman", "Mongol", "Roman", "Persian"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What was the name of the ship that carried the Pilgrims to America?",
+          "options": ["Santa Maria", "Mayflower", "Endeavour", "Victory"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which ancient wonder was located in Babylon?",
+          "options": ["Colossus of Rhodes", "Hanging Gardens", "Great Pyramid", "Lighthouse of Alexandria"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Who wrote the 95 Theses?",
+          "options": ["John Calvin", "Martin Luther", "Henry VIII", "Pope Leo X"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which country was NOT part of the Axis in WWII?",
+          "options": ["Germany", "Italy", "Japan", "Russia"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What was the capital of the Byzantine Empire?",
+          "options": ["Rome", "Athens", "Constantinople", "Alexandria"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Who was the first woman to win a Nobel Prize?",
+          "options": ["Marie Curie", "Mother Teresa", "Rosalind Franklin", "Florence Nightingale"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which civilization invented paper?",
+          "options": ["Egyptians", "Chinese", "Greeks", "Mayans"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What year did the Titanic sink?",
+          "options": ["1905", "1912", "1915", "1920"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who painted the Mona Lisa?",
+          "options": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which country was NOT part of the Soviet Union?",
+          "options": ["Ukraine", "Belarus", "Poland", "Georgia"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What ancient city was destroyed by Mount Vesuvius?",
+          "options": ["Athens", "Pompeii", "Troy", "Carthage"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who was the first emperor of Rome?",
+          "options": ["Julius Caesar", "Augustus", "Nero", "Constantine"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which war was fought between North and South Korea?",
+          "options": ["Vietnam War", "Korean War", "Cold War", "World War II"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who invented the telephone?",
+          "options": ["Thomas Edison", "Alexander Graham Bell", "Nikola Tesla", "Guglielmo Marconi"],
+          "answer": "B",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Music & Pop Culture",
+      "description": "Hit songs, bands, and viral trends from different eras.",
+      "questions": [
+        {
+          "question": "Who is known as the 'King of Pop'?",
+          "options": ["Elvis Presley", "Michael Jackson", "Prince", "Justin Timberlake"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which band released the album 'Abbey Road'?",
+          "options": ["The Rolling Stones", "The Beatles", "Led Zeppelin", "Pink Floyd"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What was the first music video played on MTV?",
+          "options": ["Thriller", "Video Killed the Radio Star", "Billie Jean", "Like a Virgin"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Who sang 'Like a Rolling Stone'?",
+          "options": ["The Rolling Stones", "Bob Dylan", "Bruce Springsteen", "Neil Young"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which artist has won the most Grammy Awards?",
+          "options": ["Beyoncé", "Michael Jackson", "Stevie Wonder", "Georg Solti"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What was Elvis Presley's first hit song?",
+          "options": ["Jailhouse Rock", "Heartbreak Hotel", "Hound Dog", "Blue Suede Shoes"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which group performed at Woodstock in 1969?",
+          "options": ["The Beatles", "Jimi Hendrix Experience", "Rolling Stones", "Led Zeppelin"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who is the best-selling female artist of all time?",
+          "options": ["Madonna", "Rihanna", "Taylor Swift", "Mariah Carey"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which rapper's real name is Marshall Mathers?",
+          "options": ["Jay-Z", "Snoop Dogg", "Eminem", "Kanye West"],
+          "answer": "C",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What was the first song to reach #1 on the Billboard Hot 100?",
+          "options": ["Rock Around the Clock", "I Want to Hold Your Hand", "Poor Little Fool", "Bill Haley's 'Rock Around the Clock'"],
+          "answer": "D",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which artist painted the 'Marilyn Diptych'?",
+          "options": ["Pablo Picasso", "Andy Warhol", "Salvador Dalí", "Jackson Pollock"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What was the highest-grossing concert tour of all time?",
+          "options": ["U2 360° Tour", "Ed Sheeran ÷ Tour", "Taylor Swift's Eras Tour", "The Rolling Stones' A Bigger Bang Tour"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which TV show featured the characters Ross and Rachel?",
+          "options": ["How I Met Your Mother", "Friends", "The Office", "Seinfeld"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Who created the 'Star Wars' franchise?",
+          "options": ["Steven Spielberg", "George Lucas", "James Cameron", "J.J. Abrams"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which artist performed at the Super Bowl LVII halftime show?",
+          "options": ["The Weeknd", "Rihanna", "Dr. Dre", "Lady Gaga"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What was the first feature-length animated movie?",
+          "options": ["Snow White and the Seven Dwarfs", "Fantasia", "Bambi", "Pinocchio"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which social media platform introduced 'Stories' first?",
+          "options": ["Facebook", "Instagram", "Snapchat", "TikTok"],
+          "answer": "C",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Who was the first YouTuber to reach 100 million subscribers?",
+          "options": ["PewDiePie", "MrBeast", "T-Series", "Dude Perfect"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which video game was the first to gross $1 billion?",
+          "options": ["Grand Theft Auto V", "Call of Duty: Modern Warfare", "Fortnite", "Minecraft"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What was the first movie to win Best Picture at the Oscars?",
+          "options": ["Gone with the Wind", "Sunrise", "Wings", "Casablanca"],
+          "answer": "C",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Would You Rather?",
+      "description": "Fun and tough hypothetical choices to consider.",
+      "questions": [
+        {
+          "question": "Would you rather always be 10 minutes late or 20 minutes early?",
+          "options": ["10 minutes late", "20 minutes early"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather lose all your money or all your photos?",
+          "options": ["Lose all your money", "Lose all your photos"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather have unlimited sushi for life or unlimited tacos?",
+          "options": ["Unlimited sushi", "Unlimited tacos"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather be able to speak all languages or talk to animals?",
+          "options": ["Speak all languages", "Talk to animals"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather be famous but unhappy or unknown but happy?",
+          "options": ["Famous but unhappy", "Unknown but happy"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather never use social media again or never watch TV/movies again?",
+          "options": ["Never use social media", "Never watch TV/movies"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather always have to sing instead of speak or dance everywhere you go?",
+          "options": ["Always sing", "Always dance"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Would you rather live without the internet or without air conditioning?",
+          "options": ["Without internet", "Without AC"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Would you rather be able to teleport anywhere or read minds?",
+          "options": ["Teleport anywhere", "Read minds"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather be able to talk to the dead or see into the future?",
+          "options": ["Talk to the dead", "See into the future"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Would you rather have a rewind button or a pause button in life?",
+          "options": ["Rewind button", "Pause button"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather be invisible or be able to fly?",
+          "options": ["Be invisible", "Be able to fly"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather have unlimited battery life on all your devices or free WiFi everywhere?",
+          "options": ["Unlimited battery", "Free WiFi everywhere"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather always have to say everything on your mind or never speak again?",
+          "options": ["Say everything", "Never speak again"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Would you rather be able to control fire or water?",
+          "options": ["Control fire", "Control water"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather be a famous director or a famous actor?",
+          "options": ["Famous director", "Famous actor"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather have a personal chef or a personal chauffeur?",
+          "options": ["Personal chef", "Personal chauffeur"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Would you rather be able to breathe underwater or survive in space without a suit?",
+          "options": ["Breathe underwater", "Survive in space"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Would you rather have unlimited time or unlimited money?",
+          "options": ["Unlimited time", "Unlimited money"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Would you rather be able to speak to animals or speak all human languages?",
+          "options": ["Speak to animals", "Speak all languages"],
+          "answer": "B",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Animals & Nature",
+      "description": "Strange creatures, ecosystems, and fascinating biology facts.",
+      "questions": [
+        {
+          "question": "What is the largest land animal?",
+          "options": ["Elephant", "Giraffe", "Hippopotamus", "Rhinoceros"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which animal has the longest lifespan?",
+          "options": ["Galapagos tortoise", "Bowhead whale", "Greenland shark", "African elephant"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What percentage of Earth's surface is covered by water?",
+          "options": ["50%", "71%", "85%", "29%"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which animal has the strongest bite force?",
+          "options": ["Lion", "Saltwater crocodile", "Hippopotamus", "Great white shark"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the fastest land animal?",
+          "options": ["Pronghorn antelope", "Cheetah", "Lion", "Greyhound"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which bird has the largest wingspan?",
+          "options": ["Albatross", "Condor", "Eagle", "Pelican"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the only mammal capable of true flight?",
+          "options": ["Flying squirrel", "Bat", "Sugar glider", "Colugo"],
+          "answer": "B",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which animal has three hearts?",
+          "options": ["Octopus", "Squid", "Cuttlefish", "Nautilus"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the largest species of shark?",
+          "options": ["Great white", "Whale shark", "Tiger shark", "Megalodon"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which animal can regrow its limbs?",
+          "options": ["Starfish", "Lizard", "Octopus", "All of the above"],
+          "answer": "D",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the tallest tree species?",
+          "options": ["Giant sequoia", "Coast redwood", "Douglas fir", "Eucalyptus"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which animal sleeps standing up?",
+          "options": ["Horse", "Cow", "Giraffe", "All of the above"],
+          "answer": "D",
+          "difficulty": "easy"
+        },
+        {
+          "question": "What is the largest living organism on Earth?",
+          "options": ["Blue whale", "Giant sequoia", "Honey fungus", "Great Barrier Reef"],
+          "answer": "C",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which animal has fingerprints most similar to humans?",
+          "options": ["Gorilla", "Koala", "Chimpanzee", "Raccoon"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the only continent without bees?",
+          "options": ["Australia", "Antarctica", "South America", "Africa"],
+          "answer": "B",
+          "difficulty": "medium"
+        },
+        {
+          "question": "Which animal can turn its head 270 degrees?",
+          "options": ["Owl", "Giraffe", "Flamingo", "Sloth"],
+          "answer": "A",
+          "difficulty": "medium"
+        },
+        {
+          "question": "What is the world's most venomous fish?",
+          "options": ["Lionfish", "Stonefish", "Pufferfish", "Box jellyfish"],
+          "answer": "B",
+          "difficulty": "hard"
+        },
+        {
+          "question": "Which animal has the largest eyes relative to body size?",
+          "options": ["Tarsier", "Owl", "Colossal squid", "Chameleon"],
+          "answer": "A",
+          "difficulty": "hard"
+        },
+        {
+          "question": "What is the only bird that can fly backwards?",
+          "options": ["Hummingbird", "Kingfisher", "Eagle", "Parrot"],
+          "answer": "A",
+          "difficulty": "easy"
+        },
+        {
+          "question": "Which animal has the strongest sense of smell?",
+          "options": ["Bloodhound", "Bear", "Elephant", "Shark"],
+          "answer": "A",
+          "difficulty": "medium"
+        }
+      ]
+    }
+  ]
+}

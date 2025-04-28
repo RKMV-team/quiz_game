@@ -1,6 +1,18 @@
-### question_loader.py
 import json
+from typing import Dict, List
 
-def load_questions(path):
-    with open(path, 'r') as f:
-        return json.load(f)
+def load_questions(path: str) -> Dict[str, Dict]:
+    """
+    Загружает вопросы из JSON файла с новой структурой категорий
+    Возвращает словарь: {category_name: {"description": str, "questions": List[Dict]}}
+    """
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    categories = {}
+    for category in data['categories']:
+        categories[category['name']] = {
+            'description': category['description'],
+            'questions': category['questions']
+        }
+    return categories

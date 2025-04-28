@@ -1,19 +1,12 @@
-### player.py
 import json
 
 class Player:
-    def __init__(self, socket):
+    def __init__(self, socket, name: str):
         self.socket = socket
+        self.name = name
+        self.score = 0
+        self.selected_categories = []
 
-    def request_question(self):
-        message = {
-            'type': 'get_question'
-        }
-        self.socket.sendall(json.dumps(message).encode())
-
-    def send_answer(self, answer):
-        message = {
-            'type': 'answer',
-            'answer': answer
-        }
+    def send(self, message_type: str, **kwargs):
+        message = {'type': message_type, **kwargs}
         self.socket.sendall(json.dumps(message).encode())
