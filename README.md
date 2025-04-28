@@ -15,7 +15,8 @@ quiz_game/
 │ ├── client.py 
 │ └── player.py 
 ├── questions/ 
-│ └── questions.json ├── tests/ 
+│ └── questions.json
+├── tests/ 
 │ ├── test_game_manager.py 
 │ └── test_question_loader.py 
 ├── requirements.txt 
@@ -29,22 +30,18 @@ quiz_game/
 2. **Start clients in separate terminals:**
 ```python3 client/client.py```
 
-💡 Features
-Supports multiple players
+## 💡 Features
+- Supports multiple players
+- Turn-based gameplay
+- Score tracking
+- Questions loaded from a JSON file
+- Command-line interface (CLI)
+- Easy to extend (e.g., GUI, game rooms)
 
-Turn-based gameplay
+## 🧪 Running Tests
 
-Score tracking
-
-Questions loaded from a JSON file
-
-Command-line interface (CLI)
-
-Easy to extend (e.g., GUI, game rooms)
-
-🧪 Running Tests
 To run the tests:
 ```python3 -m unittest discover tests```
 
-⚙️ Dependencies
+## ⚙️ Dependencies
 This project only uses the standard Python 3.8+ library, no external dependencies are required.
