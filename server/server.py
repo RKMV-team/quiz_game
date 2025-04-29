@@ -6,18 +6,21 @@ from datetime import datetime
 from game_manager import GameManager
 from question_loader import load_questions
 
-HOST = '0.0.0.0'  # Чтобы принимать подключения не только с localhost
+HOST = '0.0.0.0'  # To receive connections not only from localhost
 PORT = 5000
+
 
 def log(message):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
+
 def send_message(conn, data):
-    """Упаковать и отправить JSON сообщение с '\n' в конце."""
+    # Package and send json message with '\n' at the end
     try:
         conn.sendall((json.dumps(data) + '\n').encode('utf-8'))
     except Exception as e:
         log(f"Failed to send message: {e}")
+
 
 def handle_client(conn, addr, game_manager):
     player_id = None
@@ -73,12 +76,13 @@ def handle_client(conn, addr, game_manager):
         log(f"Error with player {player_id}: {e}")
     finally:
         if player_id:
-            game_manager.remove_player(player_id)  # Убираем игрока из игры
+            game_manager.remove_player(player_id)  # Remove player from game
         conn.close()
         log(f"Connection with {addr} closed")
 
+
 def start_server():
-    # Автоматически корректная загрузка questions.json
+    # Load questions.json
     base_dir = os.path.dirname(os.path.abspath(__file__))
     questions_path = os.path.join(base_dir, '..', 'data', 'questions.json')
 
@@ -96,6 +100,7 @@ def start_server():
             thread = threading.Thread(target=handle_client, args=(conn, addr, game_manager))
             thread.start()
             log(f"Active connections: {threading.active_count() - 1}")
+
 
 if __name__ == '__main__':
     start_server()

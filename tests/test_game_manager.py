@@ -1,12 +1,15 @@
-### test_game_manager.py
+import json
 import unittest
 from server.game_manager import GameManager
+
 
 class FakeConn:
     def __init__(self):
         self.sent = []
+
     def sendall(self, data):
         self.sent.append(data)
+
 
 class TestGameManager(unittest.TestCase):
     def setUp(self):
@@ -28,7 +31,6 @@ class TestGameManager(unittest.TestCase):
         self.assertEqual(question['question'], "Test Q1")
 
     def test_process_correct_answer(self):
-        import json
         msg = json.dumps({"type": "answer", "answer": "A"})
         result = self.manager.process_message(self.player_id, msg)
         self.assertIn("correct", result)
@@ -37,7 +39,6 @@ class TestGameManager(unittest.TestCase):
         self.assertEqual(parsed['score'], 1)
 
     def test_process_incorrect_answer(self):
-        import json
         msg = json.dumps({"type": "answer", "answer": "D"})
         result = self.manager.process_message(self.player_id, msg)
         parsed = json.loads(result)

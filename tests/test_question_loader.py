@@ -1,10 +1,11 @@
 import unittest
 from server.question_loader import load_questions
 
+
 class TestQuestionLoader(unittest.TestCase):
     def test_load_questions(self):
-        questions = load_questions('questions/questions.json')
-        self.assertIsInstance(questions, list)
+        questions = load_questions('data/questions.json')
+        self.assertIsInstance(questions, dict)
         self.assertGreater(len(questions), 0)
 
         for q in questions:

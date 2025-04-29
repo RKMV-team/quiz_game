@@ -11,10 +11,9 @@ quiz_game/
 │ ├── game_manager.py 
 │ ├── question_loader.py 
 │ └── utils.py 
-├── client/ 
-│ ├── client.py 
-│ └── player.py 
-├── questions/ 
+├── client/
+│ └── client.py 
+├── data/ 
 │ └── questions.json
 ├── tests/ 
 │ ├── test_game_manager.py 
