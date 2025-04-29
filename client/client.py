@@ -92,7 +92,16 @@ class QuizClient:
 
         elif data['type'] == 'room_deleted':
             print("\n🚫 Room was deleted. Returning to main menu.")
-            self.in_game = False   
+            self.in_game = False
+            self.quiz_started = False
+        
+
+        elif data['type'] == 'quiz_started':
+            print("\n🚀 Quiz is starting now!")
+            print("DEBUG: quiz_started message received")
+            self.quiz_started = True  # triggers play_game_loop()
+            self.play_game_loop() 
+
 
         elif data['type'] == 'joined_room':
             print(f"\n✅ Successfully joined room {data['room_id']}")
@@ -259,6 +268,7 @@ class QuizClient:
                 break
             elif choice == '2':
                 self.send_command('start_quiz', room_id=room_id)
+                break
             elif choice == '':
                 continue
             else:
@@ -266,6 +276,7 @@ class QuizClient:
 
 
     def play_game_loop(self):
+        print("DEBUG: play_game_loop started")
         while self.in_game:
             if not self.current_question:
                 self.send_command('get_question')
