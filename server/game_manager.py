@@ -73,15 +73,20 @@ class GameManager:
                 for name, data in self.questions.items()]
 
     def delete_room(self, player_id: str) -> bool:
-        with self.lock:
-            room_id = self.players[player_id]['room_id']
-            if room_id and room_id in self.rooms:
-                if player_id == self.rooms[room_id]['players'][0]:  # host check
-                    for pid in self.rooms[room_id]['players']:
-                        self.players[pid]['room_id'] = None
-                    del self.rooms[room_id]
-                    log(f"Deleting room: {room_id}")
-                    return True
+            with self.lock:
+                room_id = self.players[player_id]['room_id']
+                if room_id and room_id in self.rooms:
+                    if player_id == self.rooms[room_id]['players'][0]:  # host check
+                        for pid in self.rooms[room_id]['players']:
+                            self.players[pid]['room_id'] = None
+                            conn = self.players[pid]['conn']
+                            try:
+                                conn.sendall((json.dumps({'type': 'room_deleted'}) + '\n').encode('utf-8'))
+                            except Exception as e:
+                                log(f"Notify fail during room deletion for {pid}: {e}")
+                        del self.rooms[room_id]
+                        log(f"Deleting room: {room_id}")
+                        return True
             return False
 
     def force_start_game(self, player_id: str) -> bool:
@@ -94,15 +99,18 @@ class GameManager:
                     return True
             return False
 
-    def start_quiz(self, room_id: str):
+    def start_quiz(self, room_id: str) -> bool:
         with self.lock:
             if room_id in self.rooms:
                 self.rooms[room_id]['game_started'] = True
-                self.rooms[room_id]['status'] = 'running'
+                self.rooms[room_id]['status'] = 'in_game'
                 log(f"Manually starting quiz in room: {room_id}")
                 self.broadcast(room_id, {
-                    'type': 'quiz_started'
+                    'type': 'quiz_started',
+                    'room_id': room_id
                 })
+                return True
+            return False
 
     def broadcast(self, room_id: str, message: Dict):
         with self.lock:
@@ -154,7 +162,14 @@ class GameManager:
                     'type': 'categories_list',
                     'categories': self.get_available_categories()
                 }
-            
+                
+            elif message['type'] == 'delete_room':
+                success = self.delete_room(player_id)
+                if success:
+                    return json.dumps({'type': 'room_deleted'})
+                else:
+                    return json.dumps({'type': 'error', 'message': 'Failed to delete room or not host'})
+
             elif message['type'] == 'start_quiz':
                 room_id = message.get('room_id')
                 if not room_id:
