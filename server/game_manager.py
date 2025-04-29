@@ -34,50 +34,110 @@ class GameManager:
                 'current_question': None,
                 'categories': categories,
                 'current_round': 0,
-                'total_rounds': 10
+                'total_rounds': 10,
+                'status': 'available'
             }
             self.used_questions[room_id] = set()
             self.players[player_id]['room_id'] = room_id
             self.players[player_id]['selected_categories'] = categories
+            log(f"Creating room: {room_id}")
             return room_id
 
     def join_room(self, player_id: str, room_id: str) -> bool:
         with self.lock:
-            if room_id in self.rooms and not self.rooms[room_id]['game_started']:
-                if len(self.rooms[room_id]['players']) < 4:
-                    self.rooms[room_id]['players'].append(player_id)
-                    self.players[player_id]['room_id'] = room_id
-                    return True
+            if player_id in self.players and self.players[player_id]['room_id'] is None:
+                if room_id in self.rooms and not self.rooms[room_id]['game_started'] and self.rooms[room_id]['status'] == 'available':
+                    if len(self.rooms[room_id]['players']) < 5:
+                        self.rooms[room_id]['players'].append(player_id)
+                        self.players[player_id]['room_id'] = room_id
+
+                        if len(self.rooms[room_id]['players']) == 5:
+                            if room_id in self.rooms:
+                                self.rooms[room_id]['game_started'] = True
+                                self.rooms[room_id]['status'] = 'running'
+                                log(f"Starting game in room: {room_id}")
+                                self.broadcast(room_id, {
+                                    'type': 'quiz_started'
+                                })
+
+                        return True
             return False
 
     def list_rooms(self) -> List[Dict]:
         with self.lock:
-            return [{'room_id': room_id, 'name': room['name'], 'players': len(room['players'])}
+            return [{'room_id': room_id, 'name': room['name'], 'players': len(room['players']), 'status': room['status']}
                     for room_id, room in self.rooms.items() if not room['game_started']]
 
     def get_available_categories(self) -> List[Dict]:
         return [{'name': name, 'description': data['description']} 
                 for name, data in self.questions.items()]
 
+    def delete_room(self, player_id: str) -> bool:
+        with self.lock:
+            room_id = self.players[player_id]['room_id']
+            if room_id and room_id in self.rooms:
+                if player_id == self.rooms[room_id]['players'][0]:  # host check
+                    for pid in self.rooms[room_id]['players']:
+                        self.players[pid]['room_id'] = None
+                    del self.rooms[room_id]
+                    log(f"Deleting room: {room_id}")
+                    return True
+            return False
+
+    def force_start_game(self, player_id: str) -> bool:
+        with self.lock:
+            room_id = self.players[player_id]['room_id']
+            if room_id and room_id in self.rooms:
+                if player_id == self.rooms[room_id]['players'][0]:  # host check
+                    self.rooms[room_id]['game_started'] = True
+                    self.rooms[room_id]['status'] = 'in_game'
+                    return True
+            return False
+
+    def start_quiz(self, room_id: str):
+        with self.lock:
+            if room_id in self.rooms:
+                self.rooms[room_id]['game_started'] = True
+                self.rooms[room_id]['status'] = 'running'
+                log(f"Manually starting quiz in room: {room_id}")
+                self.broadcast(room_id, {
+                    'type': 'quiz_started'
+                })
+
+    def broadcast(self, room_id: str, message: Dict):
+        with self.lock:
+            if room_id not in self.rooms:
+                return
+            for pid in self.rooms[room_id]['players']:
+                conn = self.players[pid]['conn']
+                try:
+                    conn.sendall((json.dumps(message) + '\n').encode('utf-8'))
+                except Exception as e:
+                    log(f"Broadcast failed for player {pid}: {e}")
+
     def get_random_question(self, room_id: str) -> Dict:
-        room = self.rooms[room_id]
-        available_questions = []
+        with self.lock:
+            if room_id not in self.rooms:
+                return {}
 
-        for category in room['categories']:
-            category_questions = self.questions[category]['questions']
-            for idx, question in enumerate(category_questions):
-                question_id = f"{category}_{idx}"
-                if question_id not in self.used_questions[room_id]:
-                    available_questions.append((category, idx, question))
+            room = self.rooms[room_id]
+            available_questions = []
 
-        if not available_questions:
-            self.used_questions[room_id] = set()
-            return self.get_random_question(room_id)
+            for category in room['categories']:
+                category_questions = self.questions[category]['questions']
+                for idx, question in enumerate(category_questions):
+                    question_id = f"{category}_{idx}"
+                    if question_id not in self.used_questions[room_id]:
+                        available_questions.append((category, idx, question))
 
-        category, idx, question = random.choice(available_questions)
-        question_id = f"{category}_{idx}"
-        self.used_questions[room_id].add(question_id)
-        return question
+            if not available_questions:
+                self.used_questions[room_id] = set()
+                return self.get_random_question(room_id)
+
+            category, idx, question = random.choice(available_questions)
+            question_id = f"{category}_{idx}"
+            self.used_questions[room_id].add(question_id)
+            return question
 
     def calculate_score(self, difficulty: str, time_left: float) -> int:
         base_scores = {'easy': 10, 'medium': 20, 'hard': 30}
@@ -94,6 +154,16 @@ class GameManager:
                     'type': 'categories_list',
                     'categories': self.get_available_categories()
                 }
+            
+            elif message['type'] == 'start_quiz':
+                room_id = message.get('room_id')
+                if not room_id:
+                    return json.dumps({'type': 'error', 'message': 'Room ID is required to start quiz'})
+                success = self.start_quiz(room_id)
+                if success:
+                    return json.dumps({'type': 'quiz_started', 'room_id': room_id})
+                else:
+                    return json.dumps({'type': 'error', 'message': 'Failed to start quiz'})
 
             elif message['type'] == 'create_room':
                 selected_categories = message['categories']
@@ -125,13 +195,16 @@ class GameManager:
                 else:
                     response = {
                         'type': 'error',
-                        'message': 'Room is full or already started'
+                        'message': 'Room does not exist or already started'
                     }
 
             elif message['type'] == 'get_question':
                 room_id = self.players[player_id]['room_id']
                 question = self.get_random_question(room_id)
-                self.rooms[room_id]['current_question'] = question
+                if not question:
+                    return json.dumps({'type': 'error', 'message': 'Room no longer exists'})
+                with self.lock:
+                    self.rooms[room_id]['current_question'] = question
                 response = {
                     'type': 'question',
                     'question': question['question'],
@@ -143,7 +216,10 @@ class GameManager:
             elif message['type'] == 'answer':
                 player = self.players[player_id]
                 room_id = player['room_id']
-                current_question = self.rooms[room_id]['current_question']
+                with self.lock:
+                    if room_id not in self.rooms:
+                        return json.dumps({'type': 'error', 'message': 'Room was deleted'})
+                    current_question = self.rooms[room_id]['current_question']
 
                 is_correct = (message['answer'].upper() == current_question['answer'])
                 time_left = message.get('time_left', 0)
@@ -166,10 +242,10 @@ class GameManager:
                     'difficulty': current_question.get('difficulty', 'medium')
                 }
 
-                self.rooms[room_id]['current_round'] += 1
-
-                if self.rooms[room_id]['current_round'] >= self.rooms[room_id]['total_rounds']:
-                    self.end_game(room_id)
+                with self.lock:
+                    self.rooms[room_id]['current_round'] += 1
+                    if self.rooms[room_id]['current_round'] >= self.rooms[room_id]['total_rounds']:
+                        self.end_game(room_id)
 
             return json.dumps(response)
 
@@ -178,18 +254,18 @@ class GameManager:
             return json.dumps({'type': 'error', 'message': str(e)})
 
     def end_game(self, room_id: str):
-        final_scores = {pid: self.players[pid]['score'] for pid in self.rooms[room_id]['players']}
-        for pid in self.rooms[room_id]['players']:
-            try:
-                conn = self.players[pid]['conn']
-                conn.sendall(json.dumps({
-                    'type': 'game_over',
-                    'final_scores': final_scores
-                }).encode('utf-8') + b'\n')
-            except Exception as e:
-                log(f"Failed to send game over to {pid}: {e}")
-        
-        # После окончания игры можно удалить комнату
         with self.lock:
-            if room_id in self.rooms:
-                del self.rooms[room_id]
+            if room_id not in self.rooms:
+                return
+            final_scores = {pid: self.players[pid]['score'] for pid in self.rooms[room_id]['players']}
+            for pid in self.rooms[room_id]['players']:
+                try:
+                    conn = self.players[pid]['conn']
+                    conn.sendall(json.dumps({
+                        'type': 'game_over',
+                        'final_scores': final_scores
+                    }).encode('utf-8') + b'\n')
+                except Exception as e:
+                    log(f"Failed to send game over to {pid}: {e}")
+            del self.rooms[room_id]
+            log(f"Game ended, room deleted: {room_id}")
