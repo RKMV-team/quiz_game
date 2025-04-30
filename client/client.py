@@ -22,15 +22,15 @@ class QuizClient:
         self.question_start_time = 0
         self.connected = False
         self.in_game = False
+        self.room_menu_active = False
         self.cached_categories = []
+        self.waiting_for_next_question = False
 
     def connect(self, player_name: str) -> bool:
         try:
             self.socket.connect((HOST, PORT))
             self.player_name = player_name
             self.connected = True
-
-            # Send first message "connect"
             self.send_command('connect', name=self.player_name)
 
             listener = threading.Thread(target=self.listen_for_messages)
@@ -94,31 +94,27 @@ class QuizClient:
             self.awaiting_room_creation = False
             threading.Thread(target=self.room_waiting_menu, args=(data['room_id'],), daemon=True).start()
 
-        elif data['type'] == 'room_deleted':
-            print("\n🚫 Room was deleted. Returning to main menu.")
-            self.in_game = False
-
         elif data['type'] == 'joined_room':
             print(f"\n✅ Successfully joined room {data['room_id']}")
             self.in_game = True
             self.join_successful = True
             self.awaiting_join_response = False
+            self.waiting_for_next_question = True
 
         elif data['type'] == 'quiz_started':
-            # todo: сервак отправляет это сообщение, надо логику прописать, а то тут вроде не прописаны действия на эту штуку
-            pass
+            print("\n🚀 Quiz is starting now!")
+            self.quiz_started = True
+            self.in_game = True
+            self.current_question = None
+            self.room_menu_active = False
+            self.waiting_for_next_question = True
 
         elif data['type'] == 'question':
             self.current_question = data
             self.time_limit = data['time_limit']
             self.question_start_time = time.time()
-            self.quiz_started = True
-
-            print(f"\n--- New Question ({data['difficulty'].upper()}) ---")
-            print(data['question'])
-            for idx, option in enumerate(data['options']):
-                print(f"{chr(65 + idx)}. {option}")
-            print(f"\n⏳ You have {self.time_limit} seconds to answer!")
+            self.waiting_for_next_question = False
+            self.play_game_loop()
 
         elif data['type'] == 'answer_result':
             print("\n=== Result ===")
@@ -126,6 +122,7 @@ class QuizClient:
             print(f"Correct answer was: {data['correct_answer']}")
             print(f"Points earned: +{data['score']}")
             print(f"Your total score: {data['total_score']}")
+            self.waiting_for_next_question = True
 
         elif data['type'] == 'game_over':
             print("\n🏁 The game is over!")
@@ -134,13 +131,19 @@ class QuizClient:
             for pid, score in scores.items():
                 print(f"Player {pid}: {score} points")
             print("\nThanks for playing! 🎉")
-            self.in_game = False
-            self.current_question = None
+            self.reset_game_state()
 
         elif data['type'] == 'error':
             print(f"\n⚠️ Error: {data['message']}")
             self.join_successful = False
             self.awaiting_join_response = False
+
+    def reset_game_state(self):
+        self.in_game = False
+        self.current_question = None
+        self.quiz_started = False
+        self.room_menu_active = False
+        self.waiting_for_next_question = False
 
     def send_command(self, command: str, **kwargs):
         if not self.connected:
@@ -164,40 +167,39 @@ class QuizClient:
         if not self.connect(name):
             return
 
-        # waiting to receive a welcome message before showing the menu
-        time.sleep(0.2)  # a short pause so that the message can arrive and print out
+        time.sleep(0.2)
 
         while True:
             if not self.in_game:
-                print("\n=== Main Menu ===")
-                print("1. View Categories")
-                print("2. Create Room")
-                print("3. View Rooms & Join")
-                print("4. Exit")
-                choice = input("Choose an option: ").strip()
-
-                if choice == '1':
-                    self.send_command('get_categories')
-                    time.sleep(0.5)
-
-                elif choice == '2':
-                    self.create_room_flow()
-
-                elif choice == '3':
-                    self.send_command('list_rooms')
-                    time.sleep(0.5)
-                    self.join_room_flow()
-
-                elif choice == '4':
-                    print("Goodbye!")
-                    break
-                else:
-                    print("Invalid choice.")
+                self.main_menu()
             else:
-                if self.quiz_started:
-                    self.play_game_loop()
-                else:
-                    time.sleep(0.1)
+                time.sleep(0.1)
+
+    def main_menu(self):
+        print("\n=== Main Menu ===")
+        print("1. View Categories")
+        print("2. Create Room")
+        print("3. View Rooms & Join")
+        print("4. Exit")
+        choice = input("Choose an option: ").strip()
+
+        if choice == '1':
+            self.send_command('get_categories')
+            time.sleep(0.5)
+
+        elif choice == '2':
+            self.create_room_flow()
+
+        elif choice == '3':
+            self.send_command('list_rooms')
+            time.sleep(0.5)
+            self.join_room_flow()
+
+        elif choice == '4':
+            print("Goodbye!")
+            exit()
+        else:
+            print("Invalid choice.")
 
     def create_room_flow(self):
         self.send_command('get_categories')
@@ -220,21 +222,17 @@ class QuizClient:
 
             self.awaiting_room_creation = True
             self.send_command('create_room',
-                              room_name=room_name,
-                              categories=selected_categories)
+                            room_name=room_name,
+                            categories=selected_categories)
 
-            # Wait for the server response for up to 2 sec
             wait_start = time.time()
             while self.awaiting_room_creation and time.time() - wait_start < 2:
                 time.sleep(0.1)
 
-            if not self.room_created_successfully:
-                return  # Error has printed by server
         except (ValueError, IndexError):
             print("❌ Invalid input. Please enter valid category numbers.")
 
     def join_room_flow(self):
-
         room_id = input("Enter room ID to join or 'Q' to quit: ").strip().upper()
         if room_id == "Q":
             return
@@ -245,66 +243,72 @@ class QuizClient:
         self.awaiting_join_response = True
         self.send_command('join_room', room_id=room_id)
 
-        # Wait for the server response for up to 2 sec
         wait_start = time.time()
         while self.awaiting_join_response and time.time() - wait_start < 2:
             time.sleep(0.1)
-
-        if not self.join_successful:
-            return  # do not enter the menu, because the error has already been printed
 
     def room_waiting_menu(self, room_id: str):
         print(f"\n🕓 Waiting in room '{room_id}'...")
         print("Waiting for players to join (auto start at 5)...")
 
-        while self.in_game:
+        self.room_menu_active = True
+        while self.in_game and self.room_menu_active:
             print("\n=== Waiting Menu ===")
             print("1. Delete Room")
             print("2. Start Quiz")
             choice = input("Choose an option: ").strip()
 
+            if not self.room_menu_active:
+                break
+
             if choice == '1':
                 self.send_command('delete_room', room_id=room_id)
                 time.sleep(0.5)
-                self.in_game = False
+                self.reset_game_state()
                 break
             elif choice == '2':
                 self.send_command('start_quiz', room_id=room_id)
-                # break
+                break
             elif choice == '':
                 continue
             else:
                 print("❌ Invalid option.")
 
     def play_game_loop(self):
-        while self.in_game:
-            if not self.current_question:
-                self.send_command('get_question')
-                time.sleep(0.2)
-                continue
+        if not self.current_question:
+            return
 
-            while True:
-                time_left = max(0, int(self.time_limit - (time.time() - self.question_start_time)))
-                if time_left <= 0:
-                    print("\n⏳ Time's up! Submitting no answer.")
-                    self.send_command('answer', answer=" ", time_left=0)
-                    self.current_question = None
-                    break
+        data = self.current_question
+        print(f"\n--- New Question ({data['difficulty'].upper()}) ---")
+        print(data['question'])
+        for idx, option in enumerate(data['options']):
+            print(f"{chr(65 + idx)}. {option}")
+        print(f"\n⏳ You have {self.time_limit} seconds to answer!")
 
-                print(f"\r🕓 Time left: {int(time_left)}s ", end="")
-                ans = input("\nYour answer (A/B/C/D) or 'Q' to quit: ").strip().upper()
+        start = time.time()
+        answer_given = False
 
-                if ans == 'Q':
-                    print("Exiting game...")
-                    self.in_game = False
-                    return
+        while time.time() - start < self.time_limit and not answer_given:
+            ans = input("Your answer (A/B/C/D) or 'Q' to quit: ").strip().upper()
 
-                if ans in ['A', 'B', 'C', 'D']:
-                    self.send_command('answer', answer=ans, time_left=time_left)
-                    self.current_question = None
-                    break
-                else:
-                    print("❌ Invalid answer. Please choose A, B, C, or D.")
+            if ans == 'Q':
+                print("Exiting game...")
+                self.reset_game_state()
+                return
+
+            if ans in ['A', 'B', 'C', 'D']:
+                self.send_command('answer', answer=ans, time_left=self.time_limit - (time.time() - start))
+                answer_given = True
+            else:
+                print("❌ Invalid answer. Please choose A, B, C, or D.")
+
+        if not answer_given:
+            print("\n⏳ Time's up! Submitting no answer.")
+            self.send_command('answer', answer=" ", time_left=0)
+
+        # Ожидаем следующего вопроса или окончания игры
+        while self.in_game and self.waiting_for_next_question:
+            time.sleep(0.1)
 
 
 if __name__ == '__main__':
