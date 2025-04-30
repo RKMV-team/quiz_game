@@ -79,13 +79,12 @@ class QuizClient:
             print("\n=== Available Rooms ===")
             if not data['rooms']:
                 print("No active rooms available.")
-                print()
             else:
                 for room in data['rooms']:
                     print(
-                        f"ID: {room['room_id']} | Name: {room['name']} | Players: {room['players']} | Status: {room['status']}")
-                print()
-                self.join_room_flow()
+                        f"ID: {room['room_id']} | Name: {room['name']} | Players: {room['players']} | "
+                        f"Status: {room['status']} | Topics: {', '.join(room['categories'])}")
+            print()
 
         elif data['type'] == 'room_created':
             print(f"\n✅ Room '{data['room_id']}' created!")
@@ -182,13 +181,14 @@ class QuizClient:
 
                 elif choice == '3':
                     self.send_command('list_rooms')
+                    time.sleep(0.5)
+                    self.join_room_flow()
 
                 elif choice == '4':
                     print("Goodbye!")
                     break
                 else:
                     print("Invalid choice.")
-                time.sleep(0.5)
             else:
                 if self.quiz_started:
                     self.play_game_loop()

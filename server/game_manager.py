@@ -19,9 +19,10 @@ class GameManager:
 
     def register_player(self, conn, player_name: str) -> str:
         with self.lock:
-            player_id = str(len(self.players) + 1)
+            player_id = len(self.players) + 1
             while player_id in self.players:
                 player_id += 1
+            player_id = str(player_id)
             self.players[player_id] = {
                 'conn': conn,
                 'name': player_name,
@@ -31,13 +32,19 @@ class GameManager:
             }
             return player_id
 
-    def remove_player(self, player_id):
+    def remove_player(self, player_id: str):
         with self.lock:
+            player = self.players[player_id]
+            if player["room_id"]:
+                self.rooms[player["room_id"]]['players'].pop(self.rooms[player["room_id"]]['players'].index(player_id))
             self.players.pop(player_id)
 
     def create_room(self, player_id: str, room_name: str, categories: List[str]) -> str:
         with self.lock:
-            room_id = str(len(self.rooms) + 1)
+            room_id = len(self.rooms) + 1
+            while room_id in self.rooms.keys():
+                room_id += 1
+            room_id = str(room_id)
             self.rooms[room_id] = {
                 'name': room_name,
                 'players': [player_id],
@@ -77,7 +84,8 @@ class GameManager:
     def list_rooms(self) -> List[Dict]:
         with self.lock:
             return [
-                {'room_id': room_id, 'name': room['name'], 'players': len(room['players']), 'status': room['status']}
+                {'room_id': room_id, 'name': room['name'], 'players': len(room['players']), 'status': room['status'],
+                 'categories': room['categories']}
                 for room_id, room in self.rooms.items() if not room['game_started']]
 
     def get_available_categories(self) -> List[Dict]:
