@@ -19,8 +19,8 @@ class GameManager:
 
     def register_player(self, conn, player_name: str) -> str:
         with self.lock:
-            player_id = len(self.players) + 1
-            while player_id in self.players:
+            player_id = 1
+            while str(player_id) in self.players.keys():
                 player_id += 1
             player_id = str(player_id)
             self.players[player_id] = {
@@ -41,8 +41,8 @@ class GameManager:
 
     def create_room(self, player_id: str, room_name: str, categories: List[str]) -> str:
         with self.lock:
-            room_id = len(self.rooms) + 1
-            while room_id in self.rooms.keys():
+            room_id = 1
+            while str(room_id) in self.rooms.keys():
                 room_id += 1
             room_id = str(room_id)
             self.rooms[room_id] = {
