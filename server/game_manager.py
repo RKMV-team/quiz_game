@@ -96,7 +96,7 @@ class GameManager:
         with self.lock:
             room_id = self.players[player_id]['room_id']
             if room_id and room_id in self.rooms:
-                if player_id == self.rooms[room_id]['players'][0]:  # host
+                if player_id == self.rooms[room_id]['players'][0]:  # Host
                     for pid in self.rooms[room_id]['players']:
                         self.players[pid]['room_id'] = None
                     del self.rooms[room_id]
@@ -151,6 +151,24 @@ class GameManager:
             self.end_game(room_id)
 
         threading.Thread(target=round_thread, daemon=True).start()
+
+    def leave_room(self, player_id: str) -> bool:
+        with self.lock:
+            player = self.players.get(player_id)
+            if not player or not player['room_id']:
+                return False
+
+            room_id = player['room_id']
+            if room_id not in self.rooms:
+                return False
+
+            self.rooms[room_id]['players'].remove(player_id)
+            self.players[player_id]['room_id'] = None
+            self.players[player_id]['score'] = 0
+            self.players[player_id]['selected_categories'] = []
+
+            return True
+
 
     def broadcast(self, room_id: str, message: Dict):
         if room_id not in self.rooms:
@@ -216,6 +234,13 @@ class GameManager:
                 else:
                     response = {'type': 'error', 'message': 'Room not found or already started'}
 
+            elif message['type'] == 'leave_room':
+                # Processing the exit from the room
+                if self.leave_room(player_id):
+                    response = {'type': 'player_left', 'message': 'You have left the room.'}
+                else:
+                    response = {'type': 'error', 'message': 'Failed to leave the room.'}
+
             elif message['type'] == 'answer':
                 player = self.players[player_id]
                 room_id = player['room_id']
@@ -256,5 +281,12 @@ class GameManager:
                     conn.sendall(json.dumps({'type': 'game_over', 'final_scores': final_scores}).encode('utf-8') + b'\n')
                 except Exception as e:
                     log(f"Failed to send game over to {pid}: {e}")
+            
+            # Ceanong players' status
+            for pid in self.rooms[room_id]['players']:
+                self.players[pid]['room_id'] = None
+                self.players[pid]['score'] = 0
+                self.players[pid]['selected_categories'] = []
+            
             del self.rooms[room_id]
             log(f"Game ended. Room {room_id} deleted.")
