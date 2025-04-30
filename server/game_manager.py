@@ -9,7 +9,6 @@ from typing import Dict, List, Set
 def log(message):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
-
 class GameManager:
     def __init__(self, questions: Dict[str, Dict]):
         self.questions = questions
