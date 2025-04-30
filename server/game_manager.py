@@ -6,17 +6,21 @@ from datetime import datetime
 from typing import Dict, List, Set
 
 
+# Helper function to log messages with timestamp
 def log(message):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
 
+
 class GameManager:
     def __init__(self, questions: Dict[str, Dict]):
+        # Initialize question bank and containers for players, rooms, and used questions
         self.questions = questions
         self.players: Dict[str, Dict] = {}
         self.rooms: Dict[str, Dict] = {}
-        self.lock = threading.Lock()
-        self.used_questions: Dict[str, Set[str]] = {}
+        self.lock = threading.Lock()  # Ensures thread-safe access to shared data
+        self.used_questions: Dict[str, Set[str]] = {}  # Tracks used questions per room
 
+    # Registers a new player and assigns a unique player ID
     def register_player(self, conn, player_name: str) -> str:
         with self.lock:
             player_id = 1
@@ -32,6 +36,7 @@ class GameManager:
             }
             return player_id
 
+    # Removes a player and updates their associated room if applicable
     def remove_player(self, player_id: str):
         with self.lock:
             player = self.players[player_id]
@@ -39,6 +44,7 @@ class GameManager:
                 self.rooms[player["room_id"]]['players'].remove(player_id)
             del self.players[player_id]
 
+    # Creates a new room and assigns the creating player as host
     def create_room(self, player_id: str, room_name: str, categories: List[str]) -> str:
         with self.lock:
             room_id = 1
@@ -61,6 +67,7 @@ class GameManager:
             log(f"Creating room: {room_id}")
             return room_id
 
+    # Adds a player to an existing room if it's not full or started
     def join_room(self, player_id: str, room_id: str) -> bool:
         with self.lock:
             if player_id in self.players and self.players[player_id]['room_id'] is None:
@@ -70,6 +77,7 @@ class GameManager:
                         self.rooms[room_id]['players'].append(player_id)
                         self.players[player_id]['room_id'] = room_id
 
+                        # Automatically start game when 5 players join
                         if len(self.rooms[room_id]['players']) == 5:
                             self.rooms[room_id]['game_started'] = True
                             self.rooms[room_id]['status'] = 'running'
@@ -80,6 +88,7 @@ class GameManager:
                         return True
             return False
 
+    # Returns list of rooms that haven't started yet
     def list_rooms(self) -> List[Dict]:
         with self.lock:
             return [
@@ -88,9 +97,11 @@ class GameManager:
                 for room_id, room in self.rooms.items() if not room['game_started']
             ]
 
+    # Returns all available quiz categories
     def get_available_categories(self) -> List[Dict]:
         return [{'name': name, 'description': data['description']} for name, data in self.questions.items()]
 
+    # Deletes a room if the requesting player is the host
     def delete_room(self, player_id: str) -> bool:
         with self.lock:
             room_id = self.players[player_id]['room_id']
@@ -103,6 +114,7 @@ class GameManager:
                     return True
             return False
 
+    # Force start the game if the requesting player is the host
     def force_start_game(self, player_id: str) -> bool:
         with self.lock:
             room_id = self.players[player_id]['room_id']
@@ -115,6 +127,7 @@ class GameManager:
                     return True
             return False
 
+    # Manually starts the quiz in a specified room
     def start_quiz(self, room_id: str):
         with self.lock:
             if room_id in self.rooms:
@@ -124,6 +137,7 @@ class GameManager:
                 self.broadcast(room_id, {'type': 'quiz_started'})
         self.start_round_loop(room_id)
 
+    # Starts a thread to handle the quiz rounds for a room
     def start_round_loop(self, room_id: str):
         def round_thread():
             for _ in range(self.rooms[room_id]['total_rounds']):
@@ -134,6 +148,7 @@ class GameManager:
                 with self.lock:
                     self.rooms[room_id]['current_question'] = question
 
+                # Send question to all players in the room
                 self.broadcast(room_id, {
                     'type': 'question',
                     'question': question['question'],
@@ -142,15 +157,16 @@ class GameManager:
                     'time_limit': 15
                 })
 
-                time.sleep(15)
+                time.sleep(15)  # Wait for players to answer
 
                 with self.lock:
                     self.rooms[room_id]['current_round'] += 1
 
-            self.end_game(room_id)
+            self.end_game(room_id)  # End game after all rounds
 
         threading.Thread(target=round_thread, daemon=True).start()
 
+    # Allows player to leave a room
     def leave_room(self, player_id: str) -> bool:
         with self.lock:
             player = self.players.get(player_id)
@@ -168,7 +184,7 @@ class GameManager:
 
             return True
 
-
+    # Sends a message to all players in a room
     def broadcast(self, room_id: str, message: Dict):
         if room_id not in self.rooms:
             return
@@ -178,6 +194,7 @@ class GameManager:
             except Exception as e:
                 log(f"Broadcast failed for player {pid}: {e}")
 
+    # Selects a random unused question from room's selected categories
     def get_random_question(self, room_id: str) -> Dict:
         with self.lock:
             if room_id not in self.rooms:
@@ -193,17 +210,19 @@ class GameManager:
                         available_questions.append((category, idx, question))
 
             if not available_questions:
-                self.used_questions[room_id] = set()
+                self.used_questions[room_id] = set()  # Reset used questions if all used
                 return self.get_random_question(room_id)
 
             category, idx, question = random.choice(available_questions)
             self.used_questions[room_id].add(f"{category}_{idx}")
             return question
 
+    # Calculates score based on difficulty and remaining time
     def calculate_score(self, difficulty: str, time_left: float) -> int:
         base_scores = {'easy': 10, 'medium': 20, 'hard': 30}
         return base_scores.get(difficulty, 10) + int(time_left)
 
+    # Processes incoming messages from a player
     def process_message(self, player_id: str, data: str) -> str:
         try:
             message = json.loads(data)
@@ -269,6 +288,7 @@ class GameManager:
             log(f"Error processing message: {e}")
             return json.dumps({'type': 'error', 'message': str(e)})
 
+    # Ends the game, sends final scores, and cleans up the room
     def end_game(self, room_id: str):
         with self.lock:
             if room_id not in self.rooms:
@@ -281,7 +301,7 @@ class GameManager:
                 except Exception as e:
                     log(f"Failed to send game over to {pid}: {e}")
             
-            # Ceanong players' status
+            # Cleaning players' status
             for pid in self.rooms[room_id]['players']:
                 self.players[pid]['room_id'] = None
                 self.players[pid]['score'] = 0
