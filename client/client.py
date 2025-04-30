@@ -7,6 +7,7 @@ from typing import Dict
 HOST = '127.0.0.1'
 PORT = 5000
 
+
 class QuizClient:
     def __init__(self):
         self.awaiting_join_response = False
@@ -21,7 +22,7 @@ class QuizClient:
         self.question_start_time = 0
         self.connected = False
         self.in_game = False
-        self.cached_categories = []  # Добавили кэш списка категорий
+        self.cached_categories = []
 
     def connect(self, player_name: str) -> bool:
         try:
@@ -29,7 +30,7 @@ class QuizClient:
             self.player_name = player_name
             self.connected = True
 
-            # Отправка первого сообщения "connect"
+            # Send first message "connect"
             self.send_command('connect', name=self.player_name)
 
             listener = threading.Thread(target=self.listen_for_messages)
@@ -68,19 +69,23 @@ class QuizClient:
             print(data['message'])
 
         elif data['type'] == 'categories_list':
-            self.cached_categories = data['categories']  # Сохраняем список категорий
+            self.cached_categories = data['categories']
             print("\n=== Available Categories ===")
             for idx, category in enumerate(data['categories']):
-                print(f"{idx+1}. {category['name']} - {category['description']}")
+                print(f"{idx + 1}. {category['name']} - {category['description']}")
             print()
 
         elif data['type'] == 'rooms_list':
             print("\n=== Available Rooms ===")
             if not data['rooms']:
                 print("No active rooms available.")
-            for room in data['rooms']:
-                print(f"ID: {room['room_id']} | Name: {room['name']} | Players: {room['players']} | Status: {room['status']}")
-            print()
+                print()
+            else:
+                for room in data['rooms']:
+                    print(
+                        f"ID: {room['room_id']} | Name: {room['name']} | Players: {room['players']} | Status: {room['status']}")
+                print()
+                self.join_room_flow()
 
         elif data['type'] == 'room_created':
             print(f"\n✅ Room '{data['room_id']}' created!")
@@ -93,32 +98,23 @@ class QuizClient:
         elif data['type'] == 'room_deleted':
             print("\n🚫 Room was deleted. Returning to main menu.")
             self.in_game = False
-            self.quiz_started = False
-        
-
-        elif data['type'] == 'quiz_started':
-            print("\n🚀 Quiz is starting now!")
-            print("DEBUG: quiz_started message received")
-            self.quiz_started = True  # triggers play_game_loop()
-            self.play_game_loop() 
-
 
         elif data['type'] == 'joined_room':
             print(f"\n✅ Successfully joined room {data['room_id']}")
             self.in_game = True
             self.join_successful = True
             self.awaiting_join_response = False
-        
+
         elif data['type'] == 'question':
             self.current_question = data
             self.time_limit = data['time_limit']
             self.question_start_time = time.time()
-            self.quiz_started = True  # <-- добавлено
+            self.quiz_started = True
 
             print(f"\n--- New Question ({data['difficulty'].upper()}) ---")
             print(data['question'])
             for idx, option in enumerate(data['options']):
-                print(f"{chr(65+idx)}. {option}")
+                print(f"{chr(65 + idx)}. {option}")
             print(f"\n⏳ You have {self.time_limit} seconds to answer!")
 
         elif data['type'] == 'answer_result':
@@ -154,6 +150,7 @@ class QuizClient:
         except Exception as e:
             print(f"Failed to send command: {e}")
             self.connected = False
+        return message
 
     def start_game(self):
         name = input("Enter your nickname: ").strip()
@@ -163,9 +160,9 @@ class QuizClient:
 
         if not self.connect(name):
             return
-        
-        # Ждём получения welcome-сообщения перед показом меню
-        time.sleep(0.2)  # небольшая пауза, чтобы сообщение успело прийти и распечататься
+
+        # waiting to receive a welcome message before showing the menu
+        time.sleep(0.2)  # a short pause so that the message can arrive and print out
 
         while True:
             if not self.in_game:
@@ -185,15 +182,13 @@ class QuizClient:
 
                 elif choice == '3':
                     self.send_command('list_rooms')
-                    time.sleep(0.5)
-                    self.join_room_flow()
 
                 elif choice == '4':
                     print("Goodbye!")
                     break
                 else:
                     print("Invalid choice.")
-
+                time.sleep(0.5)
             else:
                 if self.quiz_started:
                     self.play_game_loop()
@@ -206,12 +201,12 @@ class QuizClient:
         if self.in_game:
             print("❌ You already created or joined a room.")
             return
-        
+
         room_name = input("\nEnter room name: ").strip()
         if not room_name:
             print("❌ Room name cannot be empty!")
             return
-        
+
         print("Enter category numbers separated by commas (e.g., 1,2,3):")
         categories_input = input("> ").strip()
 
@@ -221,35 +216,38 @@ class QuizClient:
 
             self.awaiting_room_creation = True
             self.send_command('create_room',
-                            room_name=room_name,
-                            categories=selected_categories)
+                              room_name=room_name,
+                              categories=selected_categories)
 
-            # Ждём ответа сервера до 2 секунд
+            # Wait for the server response for up to 2 sec
             wait_start = time.time()
             while self.awaiting_room_creation and time.time() - wait_start < 2:
                 time.sleep(0.1)
 
             if not self.room_created_successfully:
-                return  # ошибка уже напечатана сервером
+                return  # Error has printed by server
         except (ValueError, IndexError):
             print("❌ Invalid input. Please enter valid category numbers.")
 
     def join_room_flow(self):
-        room_id = input("Enter room ID to join: ").strip()
+
+        room_id = input("Enter room ID to join or 'Q' to quit: ").strip()
+        if room_id.upper() == "Q":
+            return
         if not room_id:
             print("❌ Room ID cannot be empty!")
             return
-        
+
         self.awaiting_join_response = True
         self.send_command('join_room', room_id=room_id)
 
-        # Ждём ответа от сервера максимум 2 секунды
+        # Wait for the server response for up to 2 sec
         wait_start = time.time()
         while self.awaiting_join_response and time.time() - wait_start < 2:
             time.sleep(0.1)
 
         if not self.join_successful:
-            return  # не заходим в меню, т.к. ошибка уже была напечатана
+            return  # do not enter the menu, because the error has already been printed
 
     def room_waiting_menu(self, room_id: str):
         print(f"\n🕓 Waiting in room '{room_id}'...")
@@ -268,15 +266,12 @@ class QuizClient:
                 break
             elif choice == '2':
                 self.send_command('start_quiz', room_id=room_id)
-                break
             elif choice == '':
                 continue
             else:
                 print("❌ Invalid option.")
 
-
     def play_game_loop(self):
-        print("DEBUG: play_game_loop started")
         while self.in_game:
             if not self.current_question:
                 self.send_command('get_question')
@@ -284,7 +279,7 @@ class QuizClient:
                 continue
 
             while True:
-                time_left = max(0, self.time_limit - (time.time() - self.question_start_time))
+                time_left = max(0, int(self.time_limit - (time.time() - self.question_start_time)))
                 if time_left <= 0:
                     print("\n⏳ Time's up! Submitting no answer.")
                     self.send_command('answer', answer=" ", time_left=0)
@@ -305,6 +300,7 @@ class QuizClient:
                     break
                 else:
                     print("❌ Invalid answer. Please choose A, B, C, or D.")
+
 
 if __name__ == '__main__':
     client = QuizClient()

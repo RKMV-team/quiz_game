@@ -1,8 +1,13 @@
 import json
 import random
 import threading
+from datetime import datetime
 from typing import Dict, List, Set
-from utils import log
+
+
+def log(message):
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {message}")
+
 
 class GameManager:
     def __init__(self, questions: Dict[str, Dict]):
@@ -15,6 +20,8 @@ class GameManager:
     def register_player(self, conn, player_name: str) -> str:
         with self.lock:
             player_id = str(len(self.players) + 1)
+            while player_id in self.players:
+                player_id += 1
             self.players[player_id] = {
                 'conn': conn,
                 'name': player_name,
@@ -23,6 +30,10 @@ class GameManager:
                 'selected_categories': []
             }
             return player_id
+
+    def remove_player(self, player_id):
+        with self.lock:
+            self.players.pop(player_id)
 
     def create_room(self, player_id: str, room_name: str, categories: List[str]) -> str:
         with self.lock:
@@ -44,9 +55,10 @@ class GameManager:
             return room_id
 
     def join_room(self, player_id: str, room_id: str) -> bool:
-        with self.lock:
+        with (self.lock):
             if player_id in self.players and self.players[player_id]['room_id'] is None:
-                if room_id in self.rooms and not self.rooms[room_id]['game_started'] and self.rooms[room_id]['status'] == 'available':
+                if room_id in self.rooms and not self.rooms[room_id]['game_started'] and \
+                        self.rooms[room_id]['status'] == 'available':
                     if len(self.rooms[room_id]['players']) < 5:
                         self.rooms[room_id]['players'].append(player_id)
                         self.players[player_id]['room_id'] = room_id
@@ -59,34 +71,29 @@ class GameManager:
                                 self.broadcast(room_id, {
                                     'type': 'quiz_started'
                                 })
-
                         return True
             return False
 
     def list_rooms(self) -> List[Dict]:
         with self.lock:
-            return [{'room_id': room_id, 'name': room['name'], 'players': len(room['players']), 'status': room['status']}
-                    for room_id, room in self.rooms.items() if not room['game_started']]
+            return [
+                {'room_id': room_id, 'name': room['name'], 'players': len(room['players']), 'status': room['status']}
+                for room_id, room in self.rooms.items() if not room['game_started']]
 
     def get_available_categories(self) -> List[Dict]:
-        return [{'name': name, 'description': data['description']} 
+        return [{'name': name, 'description': data['description']}
                 for name, data in self.questions.items()]
 
     def delete_room(self, player_id: str) -> bool:
-            with self.lock:
-                room_id = self.players[player_id]['room_id']
-                if room_id and room_id in self.rooms:
-                    if player_id == self.rooms[room_id]['players'][0]:  # host check
-                        for pid in self.rooms[room_id]['players']:
-                            self.players[pid]['room_id'] = None
-                            conn = self.players[pid]['conn']
-                            try:
-                                conn.sendall((json.dumps({'type': 'room_deleted'}) + '\n').encode('utf-8'))
-                            except Exception as e:
-                                log(f"Notify fail during room deletion for {pid}: {e}")
-                        del self.rooms[room_id]
-                        log(f"Deleting room: {room_id}")
-                        return True
+        with self.lock:
+            room_id = self.players[player_id]['room_id']
+            if room_id and room_id in self.rooms:
+                if player_id == self.rooms[room_id]['players'][0]:  # host check
+                    for pid in self.rooms[room_id]['players']:
+                        self.players[pid]['room_id'] = None
+                    del self.rooms[room_id]
+                    log(f"Deleting room: {room_id}")
+                    return True
             return False
 
     def force_start_game(self, player_id: str) -> bool:
@@ -99,18 +106,15 @@ class GameManager:
                     return True
             return False
 
-    def start_quiz(self, room_id: str) -> bool:
+    def start_quiz(self, room_id: str):
         with self.lock:
             if room_id in self.rooms:
                 self.rooms[room_id]['game_started'] = True
-                self.rooms[room_id]['status'] = 'in_game'
+                self.rooms[room_id]['status'] = 'running'
                 log(f"Manually starting quiz in room: {room_id}")
                 self.broadcast(room_id, {
-                    'type': 'quiz_started',
-                    'room_id': room_id
+                    'type': 'quiz_started'
                 })
-                return True
-            return False
 
     def broadcast(self, room_id: str, message: Dict):
         with self.lock:
@@ -162,13 +166,6 @@ class GameManager:
                     'type': 'categories_list',
                     'categories': self.get_available_categories()
                 }
-                
-            elif message['type'] == 'delete_room':
-                success = self.delete_room(player_id)
-                if success:
-                    return json.dumps({'type': 'room_deleted'})
-                else:
-                    return json.dumps({'type': 'error', 'message': 'Failed to delete room or not host'})
 
             elif message['type'] == 'start_quiz':
                 room_id = message.get('room_id')
