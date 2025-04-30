@@ -125,15 +125,13 @@ class GameManager:
                 })
 
     def broadcast(self, room_id: str, message: Dict):
-        with self.lock:
-            if room_id not in self.rooms:
-                return
-            for pid in self.rooms[room_id]['players']:
-                conn = self.players[pid]['conn']
-                try:
-                    conn.sendall((json.dumps(message) + '\n').encode('utf-8'))
-                except Exception as e:
-                    log(f"Broadcast failed for player {pid}: {e}")
+        if room_id not in self.rooms:
+            return
+        for pid in self.rooms[room_id]['players']:
+            try:
+                self.players[pid]['conn'].sendall((json.dumps(message) + '\n').encode('utf-8'))
+            except Exception as e:
+                log(f"Broadcast failed for player {pid}: {e}")
 
     def get_random_question(self, room_id: str) -> Dict:
         with self.lock:
@@ -179,11 +177,8 @@ class GameManager:
                 room_id = message.get('room_id')
                 if not room_id:
                     return json.dumps({'type': 'error', 'message': 'Room ID is required to start quiz'})
-                success = self.start_quiz(room_id)
-                if success:
-                    return json.dumps({'type': 'quiz_started', 'room_id': room_id})
-                else:
-                    return json.dumps({'type': 'error', 'message': 'Failed to start quiz'})
+                self.start_quiz(room_id)
+                return json.dumps({'type': 'quiz_started', 'room_id': room_id})
 
             elif message['type'] == 'create_room':
                 selected_categories = message['categories']

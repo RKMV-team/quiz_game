@@ -104,6 +104,10 @@ class QuizClient:
             self.join_successful = True
             self.awaiting_join_response = False
 
+        elif data['type'] == 'quiz_started':
+            # todo: сервак отправляет это сообщение, надо логику прописать, а то тут вроде не прописаны действия на эту штуку
+            pass
+
         elif data['type'] == 'question':
             self.current_question = data
             self.time_limit = data['time_limit']
@@ -231,8 +235,8 @@ class QuizClient:
 
     def join_room_flow(self):
 
-        room_id = input("Enter room ID to join or 'Q' to quit: ").strip()
-        if room_id.upper() == "Q":
+        room_id = input("Enter room ID to join or 'Q' to quit: ").strip().upper()
+        if room_id == "Q":
             return
         if not room_id:
             print("❌ Room ID cannot be empty!")
@@ -266,6 +270,7 @@ class QuizClient:
                 break
             elif choice == '2':
                 self.send_command('start_quiz', room_id=room_id)
+                # break
             elif choice == '':
                 continue
             else:

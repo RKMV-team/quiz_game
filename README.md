@@ -9,8 +9,7 @@ quiz_game/
 ├── server/ 
 │ ├── server.py 
 │ ├── game_manager.py 
-│ ├── question_loader.py 
-│ └── utils.py 
+│ └── question_loader.py  
 ├── client/
 │ └── client.py 
 ├── data/ 
